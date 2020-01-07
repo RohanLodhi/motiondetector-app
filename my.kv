@@ -1,0 +1,42 @@
+<Button>:
+    font_size:40
+    color:0.3,0.6,0.7,1
+    size_hint: 0.5, 0.1
+    background_color: 0.3,0.4,0.5,1
+    
+<FloatLayout>:
+    Button:
+        pos_hint: {"x":0.5, "top":1}
+        text: "Start"
+
+    Button:
+        pos_hint: {"top":1}
+        text: "Stop"
+
+    Camera:
+        
+<CamBoxLayout>:
+    orientation: "vertical"
+    display: entry
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        size_hint: 1, 1
+        id: entry
+        multiline: False
+        Camera:
+            center: self.size and entry.center
+            size: entry.height, entry.width
+
+            canvas.before:
+                PushMatrix:
+                Rotate:
+                    angle: 90
+                    origin: self.center
+
+            canvas.after:
+                PopMatrix:
+            allow_stretch: True
+            resolution: (720, 1080)
+            play: True
